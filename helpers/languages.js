@@ -10,7 +10,7 @@ export const languageOptions = [
 // Online Javascript Editor for free
 // Write, Edit and Run your Javascript code using JS Online Compiler
     
-console.log("Try app.masteringbackend.com");`,
+console.log("Try masteringbackend.com");`,
   },
   {
     id: 68,
@@ -23,9 +23,9 @@ console.log("Try app.masteringbackend.com");`,
 <?php
 
 // Online PHP compiler to run PHP program online
-// Print "Try app.masteringbackend.com" message
+// Print "Try masteringbackend.com" message
 
-echo "Try app.masteringbackend.com";
+echo "Try masteringbackend.com";
 
 ?>`,
   },

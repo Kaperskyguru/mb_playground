@@ -3,8 +3,15 @@
     class="text-light-100 bg-light-200 flex w-full items-center justify-between py-3"
   >
     <div class="flex items-center">
-      <a href="#" class="text-light-100 text-2xl font-bold lg:text-3xl">
+      <a
+        href="https://masteringbackend.com"
+        target="_blank"
+        class="text-light-100 text-2xl lg:text-3xl"
+      >
         <logo />
+        <p class="text-sm capitalize pt-2">
+          Online {{ useRoute().params?.language }} Playground
+        </p>
       </a>
     </div>
     <div class="hidden items-center justify-center gap-10 lg:flex">

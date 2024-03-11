@@ -15,7 +15,7 @@
               <nuxt-link
                 :to="`/${lang.value}`"
                 target="_blank"
-                class="dark:bg-tertiary-900 bg-[#D3DCE6] dark:border-white border border-solid grid h-10 w-10 p-1.5 place-items-center text-[#6D6D93] dark:text-white"
+                class="dark:bg-tertiary-900 bg-[#D3DCE6] dark:border-gray-400 border border-solid grid h-10 w-10 p-1.5 place-items-center text-[#6D6D93] dark:text-white"
               >
                 <Icon class="h-full w-full" :name="lang.icon" />
               </nuxt-link>
@@ -47,7 +47,7 @@ function getLanguage() {
 langauge.value = getLanguage();
 
 useHead({
-  title: `Online ${langauge.value?.label} Editor`,
+  title: `Online ${langauge.value?.label} Playground`,
   meta: [
     {
       hid: "keywords",
@@ -57,23 +57,23 @@ useHead({
     {
       hid: "description",
       name: "description",
-      content: `The user friendly ${langauge.value?.label} online compiler for server-side programming langauges and backend engineers that allows you to Write ${langauge.value?.label} code and run it online. The ${langauge.value?.label} text editor also supports taking input from the user and standard libraries. It uses the ${langauge.value?.label} compiler to compile code.`,
+      content: `The user friendly ${langauge.value?.label} online compiler for server-side programming langauges and backend engineers that allows you to Write ${langauge.value?.label} code and run it online. The ${langauge.value?.label} text Playground also supports taking input from the user and standard libraries. It uses the ${langauge.value?.label} compiler to compile code.`,
     },
 
     {
       hid: "og:title",
       property: "og:title",
-      content: `Online ${langauge.value?.label} Editor`,
+      content: `Online ${langauge.value?.label} Playground`,
     },
     {
       hid: "og:description",
       property: "og:description",
-      content: `The user friendly ${langauge.value?.label} online compiler for server-side programming langauges and backend engineers that allows you to Write ${langauge.value?.label} code and run it online. The ${langauge.value?.label} text editor also supports taking input from the user and standard libraries. It uses the ${langauge.value?.label} compiler to compile code.`,
+      content: `The user friendly ${langauge.value?.label} online compiler for server-side programming langauges and backend engineers that allows you to Write ${langauge.value?.label} code and run it online. The ${langauge.value?.label} text Playground also supports taking input from the user and standard libraries. It uses the ${langauge.value?.label} compiler to compile code.`,
     },
     {
       hid: "og:image",
       property: "og:image",
-      content: `../assets/icons/lang/${langauge.value?.icon}.svg?raw`,
+      content: `../assets/icons/lang/${langauge.value?.icon}.svg`,
     },
     {
       hid: "og:url",
