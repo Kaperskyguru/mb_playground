@@ -1,4 +1,8 @@
-<template></template>
+<template>
+  <main>
+    <slot />
+  </main>
+</template>
 
 <script setup>
 </script>
