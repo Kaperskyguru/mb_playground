@@ -1,6 +1,6 @@
 <template>
   <div class="flex">
-    <section>
+    <section class="">
       <nav
         class="dark:bg-tertiary-900 bg-tertiary-100 h-full border-gray-300 dark:border-gray-600 w-auto overflow-y-auto border-x border-solid"
       >
@@ -46,20 +46,71 @@ function getLanguage() {
 
 langauge.value = getLanguage();
 
-useServerSeoMeta({
-  ogTitle: () => `Online ${langauge.value?.label} Editor`,
-  title: () => `Online ${langauge.value?.label} Editor`,
-  description: () =>
-    `The user friendly ${langauge.value?.label} online compiler for server-side programming langauges and backend engineers that allows you to Write ${langauge.value?.label} code and run it online. The ${langauge.value?.label} text editor also supports taking input from the user and standard libraries. It uses the ${langauge.value?.label} compiler to compile code.`,
-  ogDescription: () =>
-    `The user friendly ${langauge.value?.label} online compiler for server-side programming langauges and backend engineers that allows you to Write ${langauge.value?.label} code and run it online. The ${langauge.value?.label} text editor also supports taking input from the user and standard libraries. It uses the ${langauge.value?.label} compiler to compile code.`,
-  ogImage: () => `../assets/icons/lang/${langauge.value?.icon}.svg`,
-  ogImageUrl: () => `../assets/icons/lang/${langauge.value?.icon}.svg`,
-  twitterCard: () => "summary_large_image",
-  twitterTitle: () => `Online ${langauge.value?.label} Editor`,
-  twitterDescription: () =>
-    `The user friendly ${langauge.value?.label} online compiler for server-side programming langauges and backend engineers that allows you to Write ${langauge.value?.label} code and run it online. The ${langauge.value?.label} text editor also supports taking input from the user and standard libraries. It uses the ${langauge.value?.label} compiler to compile code.`,
-  twitterImage: () => `../assets/icons/lang/${langauge.value?.icon}.svg`,
+useHead({
+  title: `Online ${langauge.value?.label} Editor`,
+  meta: [
+    {
+      hid: "keywords",
+      name: "keywords",
+      content: `${langauge.value?.value}, server-side programming languages, backend programming languages, C#, PHP, Java, JavaScript, Rust, Golang`,
+    },
+    {
+      hid: "description",
+      name: "description",
+      content: `The user friendly ${langauge.value?.label} online compiler for server-side programming langauges and backend engineers that allows you to Write ${langauge.value?.label} code and run it online. The ${langauge.value?.label} text editor also supports taking input from the user and standard libraries. It uses the ${langauge.value?.label} compiler to compile code.`,
+    },
+
+    {
+      hid: "og:title",
+      property: "og:title",
+      content: `Online ${langauge.value?.label} Editor`,
+    },
+    {
+      hid: "og:description",
+      property: "og:description",
+      content: `The user friendly ${langauge.value?.label} online compiler for server-side programming langauges and backend engineers that allows you to Write ${langauge.value?.label} code and run it online. The ${langauge.value?.label} text editor also supports taking input from the user and standard libraries. It uses the ${langauge.value?.label} compiler to compile code.`,
+    },
+    {
+      hid: "og:image",
+      property: "og:image",
+      content: `../assets/icons/lang/${langauge.value?.icon}.svg?raw`,
+    },
+    {
+      hid: "og:url",
+      property: "og:url",
+      content: `/${langauge.value?.value}`,
+    },
+    {
+      hid: "og:image:width",
+      property: "og:image:width",
+      content: "100",
+    },
+    {
+      hid: "og:image:height",
+      property: "og:image:height",
+      content: "100",
+    },
+    {
+      hid: "og:type",
+      property: "og:type",
+      content: "article",
+    },
+    // {
+    //   hid: "article:published_time",
+    //   property: "article:published_time",
+    //   content: this.hub?.createdAt,
+    // },
+    // {
+    //   hid: "article:modified_time",
+    //   property: "article:modified_time",
+    //   content: this.hub?.updatedAt,
+    // },
+    {
+      hid: "twitter:card",
+      name: "twitter:card",
+      content: "summary_large_image",
+    },
+  ],
 });
 </script>
 
