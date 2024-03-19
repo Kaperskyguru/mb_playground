@@ -1,14 +1,33 @@
 <template>
-  <div class="flex justify-between dark:bg-[#011627]">
-    <section class="overflow-hidden w-full dark:bg-[#011627]">
+  <div class="flex md:flex-row flex-col justify-between dark:bg-[#011627]">
+    <div class="md:hidden flex items-center justify-center py-2 my-5 gap-2">
+      <button
+        @click.prevent="onShowEditor"
+        class="text-white bg-gray-600 px-4 py-2 rounded dark:text-white text-bold text-gray-500 text-2xl"
+      >
+        main.js
+      </button>
+      <button
+        @click.prevent="onShowOutput"
+        class="text-white bg-gray-600 px-4 py-2 rounded dark:text-white text-bold text-gray-500 text-2xl"
+      >
+        Output
+      </button>
+    </div>
+
+    <section
+      class="overflow-hidden w-full dark:bg-[#011627]"
+      v-if="showEditor"
+      :class="{}"
+    >
       <div class="flex justify-between items-center gap-2">
         <div
-          class="dark:bg-[#011627] px-4 dark:text-white text-bold text-gray-500 text-2xl"
+          class="dark:bg-[#011627] px-4 dark:text-white text-bold text-gray-500 text-2xl md:flex hidden"
         >
           main.{{ lang?.extension }}
         </div>
         <div
-          class="px-2 pt-2 pb-2.5 w-full dark:bg-tertiary-900 mb-2 border-x border-b border-solid border-gray-200 dark:border-gray-500 flex justify-end items-center"
+          class="px-2 pt-2 pb-2.5 w-full dark:bg-tertiary-900 mb-2 md:border-x border-b border-solid border-gray-200 dark:border-gray-500 flex justify-end items-center"
         >
           <div class="border-wite flex cursor-pointer items-center pr-4">
             <button
@@ -75,7 +94,10 @@
         </div>
       </div>
     </section>
-    <section class="w-full">
+    <section
+      class="w-full md:h-full h-screen"
+      :class="{ 'hidden md:block': !showOutput }"
+    >
       <div
         class="bg-white dark:bg-tertiary-900 dark:text-white px-2 pt-2 pb-2 flex items-center justify-between border-b border-solid dark:border-gray-500 border-gray-300"
       >
@@ -143,10 +165,12 @@ const { $graphql, $toast } = useNuxtApp();
 const monaco = useMonaco();
 const colorMode = useColorMode();
 const loading = ref(false);
+const showEditor = ref(true);
+const showOutput = ref(false);
 const props = defineProps(["id", "lang"]);
 
 const processing = ref(false);
-const showOutput = ref(false);
+// const showOutput = ref(false);
 const showInput = ref(false);
 const compiledResult = ref({});
 const playground = reactive({
@@ -226,7 +250,7 @@ async function runCode() {
     input: input.value,
   });
 
-  showOutput.value = true;
+  // showOutput.value = true;
 }
 
 function getLanguageId(language) {
@@ -349,6 +373,16 @@ watch(
   },
   { immediate: true }
 );
+
+function onShowEditor() {
+  showEditor.value = true;
+  showOutput.value = false;
+}
+
+function onShowOutput() {
+  showOutput.value = true;
+  showEditor.value = false;
+}
 </script>
 
 <style>

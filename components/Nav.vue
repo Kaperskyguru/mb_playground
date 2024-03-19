@@ -1,15 +1,15 @@
 <template>
   <nav
-    class="text-light-100 bg-light-200 flex w-full items-center justify-between py-3"
+    class="text-light-100 bg-light-200 flex w-full items-center justify-between py-3 dark:md:text-white dark:text-black"
   >
     <div class="flex items-center">
       <a
         href="https://masteringbackend.com"
         target="_blank"
-        class="text-light-100 text-2xl lg:text-3xl"
+        class="text-light-100 dark:md:text-white dark:text-black text-2xl lg:text-3xl"
       >
         <logo />
-        <p class="text-sm capitalize pt-2">
+        <p class="text-sm dark:md:text-white dark:text-white capitalize pt-2">
           Online {{ useRoute().params?.language }} Playground
         </p>
       </a>
