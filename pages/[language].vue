@@ -35,16 +35,14 @@ import { languageOptions } from "~/helpers/languages";
 
 const langauge = ref("");
 
-function getLanguage() {
-  const lang = languageOptions.find(
-    (lang) => lang.value == useRoute().params?.language
-  );
+function getLanguage(language = "javascript") {
+  const lang = languageOptions.find((lang) => lang.value == language);
   if (lang) return lang;
 
-  return null;
+  return navigateTo("/javascript");
 }
 
-langauge.value = getLanguage();
+langauge.value = getLanguage(useRoute().params?.language);
 
 useHead({
   title: `Online ${langauge.value?.label} Playground`,
