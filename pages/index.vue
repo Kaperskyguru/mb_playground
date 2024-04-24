@@ -97,12 +97,13 @@
           <h1
             class="text-light-300 max-w-4xl text-center text-5xl font-bold md:text-6xl lg:text-7xl"
           >
-            Online Code Editor for Backend Engineers
+            Online Code Playground for Backend Engineers
           </h1>
           <p class="text-light-100 mt-5 max-w-xl text-center">
-            The ultimate online code editor designed specifically for backend
-            engineers. You can quickly test and practice backend code in over
-            10+ backend languages, all in one convenient place.
+            The ultimate online code playground, online code compiler, and
+            online code editor designed specifically for backend engineers. You
+            can quickly test and practice backend code in over 10+ backend
+            languages, all in one convenient place.
           </p>
           <div class="mt-5 flex flex-col items-center justify-center">
             <a

@@ -55,7 +55,7 @@ useHead({
     {
       hid: "description",
       name: "description",
-      content: `The user friendly ${langauge.value?.label} online compiler for server-side programming langauges and backend engineers that allows you to Write ${langauge.value?.label} code and run it online. The ${langauge.value?.label} text Playground also supports taking input from the user and standard libraries. It uses the ${langauge.value?.label} compiler to compile code.`,
+      content: `The user friendly ${langauge.value?.label} online code playground, online code compiler, and online code editor for server-side programming langauges and backend engineers that allows you to Write ${langauge.value?.label} code and run it online. The ${langauge.value?.label} text Playground also supports taking input from the user and standard libraries. It uses the ${langauge.value?.label} compiler to compile code.`,
     },
 
     {
@@ -66,7 +66,7 @@ useHead({
     {
       hid: "og:description",
       property: "og:description",
-      content: `The user friendly ${langauge.value?.label} online compiler for server-side programming langauges and backend engineers that allows you to Write ${langauge.value?.label} code and run it online. The ${langauge.value?.label} text Playground also supports taking input from the user and standard libraries. It uses the ${langauge.value?.label} compiler to compile code.`,
+      content: `The user friendly ${langauge.value?.label} online code playground, online code compiler, and online code editor for server-side programming langauges and backend engineers that allows you to Write ${langauge.value?.label} code and run it online. The ${langauge.value?.label} text Playground also supports taking input from the user and standard libraries. It uses the ${langauge.value?.label} compiler to compile code.`,
     },
     {
       hid: "og:image",
