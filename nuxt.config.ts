@@ -17,7 +17,7 @@ export default defineNuxtConfig({
           hid: "description",
           name: "description",
           content:
-            "The user friendly online code playground, online code compiler, and online code editor for server-side programming langauges and backend engineers that allows you to Write code in any backend programming languages and run it online. The online code playground and text editor also supports taking input from the user and standard libraries. It uses any of bcakend programming language's compiler to compile code.",
+            "The user friendly online code playground, online code compiler, and online code editor for server-side programming langauges and backend engineers that allows you to Write code in any backend programming languages and run it online. The online code playground and text editor also supports taking input from the user and standard libraries. It uses any of backend programming language's compiler to compile code.",
         },
 
         {
@@ -28,7 +28,7 @@ export default defineNuxtConfig({
         {
           hid: "og:description",
           property: "og:description",
-          content: `The user friendly online code playground, online code compiler, and online code editor for server-side programming langauges and backend engineers that allows you to Write code in any backend programming languages and run it online. The online code playground and text editor also supports taking input from the user and standard libraries. It uses any of bcakend programming language's compiler to compile code.`,
+          content: `The user friendly online code playground, online code compiler, and online code editor for server-side programming langauges and backend engineers that allows you to Write code in any backend programming languages and run it online. The online code playground and text editor also supports taking input from the user and standard libraries. It uses any of backend programming language's compiler to compile code.`,
         },
 
         {
