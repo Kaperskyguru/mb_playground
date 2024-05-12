@@ -10,9 +10,6 @@
 </template>
 
 <script setup>
-definePageMeta({
-  colorMode: "system",
-});
 </script>
 
 <style>

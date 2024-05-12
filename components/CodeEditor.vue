@@ -214,28 +214,6 @@ onMounted(() => {
   loading.value = false;
 });
 
-async function loadPlayground(id) {
-  try {
-    const variables = {
-      id: id,
-    };
-
-    const result = await $graphql.default.request(GET_PlAYGROUND, variables);
-    const Playground = result.getPlayground;
-    playground.code = Playground.code;
-    playground.language = Playground.language;
-    playground.isReadyOnly = Playground.isReadyOnly;
-    playground.shouldShowInput = Playground.shouldShowInput;
-    found.value = true;
-  } catch (error) {
-    found.value = false;
-  }
-}
-
-async function resetPlayground() {
-  await loadPlayground(props.id);
-}
-
 function clearConsole() {
   const elem = document.querySelector("#output");
   elem.innerHTML = "";
@@ -279,18 +257,23 @@ const handleCompile = async ({ code, language, input }) => {
     headers: {
       "content-type": "application/json",
       "Content-Type": "application/json",
-      "X-RapidAPI-Host": config.public.RAPID_API_HOST,
-      "X-RapidAPI-Key": config.public.RAPID_API_KEY,
+      "X-Auth-User": config.public.RAPID_API_KEY,
     },
     data: formData,
   };
+
+  if (config.public.node_env?.includes("development")) {
+    options.headers["X-Auth-Token"] = config.public.RAPID_API_KEY;
+  }
 
   try {
     const response = await axios.request(options);
 
     const token = response.data.token;
+
     checkStatus(token);
   } catch (err) {
+    console.log(err);
     // get error status
     let status = err.response?.status;
     if (status === 429) {
@@ -309,10 +292,16 @@ const checkStatus = async (token) => {
     url: config.public.RAPID_API_URL + "/" + token,
     params: { base64_encoded: "true", fields: "*" },
     headers: {
-      "X-RapidAPI-Host": config.public.RAPID_API_HOST,
-      "X-RapidAPI-Key": config.public.RAPID_API_KEY,
+      "content-type": "application/json",
+      "Content-Type": "application/json",
+      "X-Auth-User": config.public.RAPID_API_KEY,
     },
   };
+
+  if (config.public.node_env?.includes("development")) {
+    options.headers["X-Auth-Token"] = config.public.RAPID_API_KEY;
+  }
+
   try {
     let response = await axios.request(options);
     let statusId = response.data.status?.id;
@@ -354,6 +343,7 @@ function toogle() {
 }
 
 function actviateTheme(theme) {
+  if (!monaco) return;
   if (theme.includes("light"))
     import("monaco-themes/themes/Xcode_default.json").then((data) => {
       monaco?.editor?.defineTheme("vs", data);

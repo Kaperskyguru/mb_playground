@@ -84,11 +84,13 @@ export default defineNuxtConfig({
       RAPID_API_HOST: process.env.RAPID_API_HOST,
       RAPID_API_KEY: process.env.RAPID_API_KEY,
       RAPID_API_URL: process.env.RAPID_API_URL,
+      node_env: process.env.NODE_ENV,
     },
   },
 
   colorMode: {
     classSuffix: "",
+    preference: "system",
   },
 
   monacoEditor: {
@@ -112,6 +114,7 @@ export default defineNuxtConfig({
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
+      "tailwindcss/nesting": "postcss-nesting",
     },
   },
 });
