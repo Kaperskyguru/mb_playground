@@ -102,9 +102,14 @@ print("Try masteringbackend.com")
     name: "Ruby (2.7.0)",
     label: "Ruby (2.7.0)",
     value: "ruby",
-    icon: "r",
-    extension: "r",
-    snippet: ``,
+    icon: "rb",
+    extension: "rb",
+    snippet: `
+    # Online Python compiler (interpreter) to run Python online.
+# Write Python 3 code in this online editor and run it.
+
+puts "Try masteringbackend.com"
+`,
   },
 
   {
