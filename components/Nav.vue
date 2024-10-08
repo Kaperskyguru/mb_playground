@@ -4,7 +4,9 @@
   >
     <div class="flex items-center">
       <a
-        href="https://masteringbackend.com"
+        :href="`https://masteringbackend.com?ref=playground&utm_source=codeplayground.site&utm_medium=${
+          useRoute().params?.language
+        }&utm_campaign=header`"
         target="_blank"
         class="text-light-100 dark:md:text-white dark:text-black text-2xl lg:text-3xl"
       >
@@ -16,29 +18,32 @@
     </div>
     <div class="hidden items-center justify-center gap-10 lg:flex">
       <a
-        href="https://masteringbackend.beehiiv.com/p/becoming-a-great-backend-engineer"
+        :href="`https://masteringbackend.beehiiv.com/p/becoming-a-great-backend-engineer?ref=playground&utm_source=codeplayground.site&utm_medium=${
+          useRoute().params?.language
+        }&utm_campaign=header`"
         class="text-md rounded-lg px-3 py-2 font-sans"
         >Become a Great Backend Engineer</a
       >
       <a
-        href="https://masteringbackend.beehiiv.com/"
-        class="text-md rounded-lg px-3 py-2"
-        >Join Backend Weekly</a
-      >
-      <a
-        href="https://masteringbackend.com/community"
+        :href="`https://masteringbackend.com/community?ref=playground&utm_source=codeplayground.site&utm_medium=${
+          useRoute().params?.language
+        }&utm_campaign=header`"
         class="text-md rounded-lg px-3 py-2"
         >Join Backend Community</a
       >
       <a
-        href="https://masteringbackend.com/academy"
+        :href="`https://masteringbackend.com/academy?ref=playground&utm_source=codeplayground.site&utm_medium=${
+          useRoute().params?.language
+        }&utm_campaign=header`"
         class="text-md rounded-lg px-3 py-2"
         >Join Backend Academy</a
       >
     </div>
     <div class="hidden items-center lg:flex">
       <a
-        href="https://masteringbackend.com/hubs/backend-engineering"
+        :href="`https://masteringbackend.com/hubs/backend-engineering?ref=playground&utm_source=codeplayground.site&utm_medium=${
+          useRoute().params?.language
+        }&utm_campaign=header`"
         class="text-md ml-5 rounded-lg bg-[#3E48AD] px-3 py-2 font-semibold text-white"
         >Learn Backend Engineering</a
       >
@@ -76,22 +81,23 @@
           role="menu"
         >
           <a
-            href="https://masteringbackend.beehiiv.com/p/becoming-a-great-backend-engineer"
+            :href="`https://masteringbackend.beehiiv.com/p/becoming-a-great-backend-engineer?ref=playground&utm_source=codeplayground.site&utm_medium=${
+              useRoute().params?.language
+            }&utm_campaign=header`"
             class="text-md rounded-lg px-3 py-2 font-sans"
             >Become a Great Backend Engineer</a
           >
           <a
-            href="https://masteringbackend.beehiiv.com/"
-            class="text-md rounded-lg px-3 py-2"
-            >Join Backend Weekly</a
-          >
-          <a
-            href="https://masteringbackend.com/community"
+            :href="`https://masteringbackend.com/community?ref=playground&utm_source=codeplayground.site&utm_medium=${
+              useRoute().params?.language
+            }&utm_campaign=header`"
             class="text-md rounded-lg px-3 py-2"
             >Join Backend Community</a
           >
           <a
-            href="https://masteringbackend.com/academy"
+            :href="`https://masteringbackend.com/academy?ref=playground&utm_source=codeplayground.site&utm_medium=${
+              useRoute().params?.language
+            }&utm_campaign=header`"
             class="text-md rounded-lg px-3 py-2"
             >Join Backend Academy</a
           >
