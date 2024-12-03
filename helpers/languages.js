@@ -53,6 +53,7 @@ func main() {
     name: "TypeScript (3.7.4)",
     label: "TypeScript (3.7.4)",
     value: "typescript",
+    extension: "ts",
     icon: "javascript",
     snippet: `
 

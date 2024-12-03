@@ -31,13 +31,13 @@
         class="text-md rounded-lg px-3 py-2"
         >Join Backend Community</a
       >
-      <a
+      <!-- <a
         :href="`https://masteringbackend.com/academy?ref=playground&utm_source=codeplayground.site&utm_medium=${
           useRoute().params?.language
         }&utm_campaign=header`"
         class="text-md rounded-lg px-3 py-2"
         >Join Backend Academy</a
-      >
+      > -->
     </div>
     <div class="hidden items-center lg:flex">
       <a

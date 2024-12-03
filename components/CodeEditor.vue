@@ -38,10 +38,28 @@
               <DarkIcon v-else />
             </button>
           </div>
+          <div class="pr-4">
+            <button
+              @click.prevent="clearEditor"
+              class="border border-gray-400 border-solid px-4 rounded py-2 text-primary-100 dark:text-white"
+            >
+              Clear
+            </button>
+          </div>
+          <div class="pr-4">
+            <button
+              @click.prevent="createGist"
+              class="bg-primary-100 px-4 border border-primary-100 hover:border-white rounded py-2 text-white"
+              :disabled="loading"
+              :class="{ '!bg-gray-300': loading }"
+            >
+              {{ loading ? "Generating..." : "Share" }}
+            </button>
+          </div>
           <div>
             <button
               @click.prevent="runCode"
-              class="bg-primary-100 px-4 rounded py-2 text-white"
+              class="bg-primary-100 px-4 rounded py-2 text-white border hover:border-white border-primary-100"
               :disabled="processing"
               :class="{ '!bg-gray-300': processing }"
             >
@@ -149,6 +167,10 @@
           </div>
         </div>
       </div>
+
+      <section class="fixed bottom-5 pr-2">
+        <Course :lang="playground?.language" />
+      </section>
     </section>
   </div>
 </template>
@@ -159,6 +181,7 @@ import { languageOptions } from "~/helpers/languages";
 import axios from "axios";
 import LightIcon from "~/assets/icons/lightIcon.svg";
 import DarkIcon from "~/assets/icons/darkIcon.svg";
+import { Octokit } from "@octokit/core";
 
 const config = useRuntimeConfig();
 const { $graphql, $toast } = useNuxtApp();
@@ -170,7 +193,6 @@ const showOutput = ref(false);
 const props = defineProps(["id", "lang"]);
 
 const processing = ref(false);
-// const showOutput = ref(false);
 const showInput = ref(false);
 const compiledResult = ref({});
 const playground = reactive({
@@ -206,39 +228,22 @@ watch(
   }
 );
 
-onBeforeMount(() => {
+onBeforeMount(async () => {
   loading.value = true;
+  await getGist();
 });
 
 onMounted(() => {
   loading.value = false;
 });
 
-async function loadPlayground(id) {
-  try {
-    const variables = {
-      id: id,
-    };
-
-    const result = await $graphql.default.request(GET_PlAYGROUND, variables);
-    const Playground = result.getPlayground;
-    playground.code = Playground.code;
-    playground.language = Playground.language;
-    playground.isReadyOnly = Playground.isReadyOnly;
-    playground.shouldShowInput = Playground.shouldShowInput;
-    found.value = true;
-  } catch (error) {
-    found.value = false;
-  }
-}
-
-async function resetPlayground() {
-  await loadPlayground(props.id);
-}
-
 function clearConsole() {
   const elem = document.querySelector("#output");
   elem.innerHTML = "";
+}
+
+function clearEditor() {
+  playground.code = "";
 }
 
 async function runCode() {
@@ -253,11 +258,75 @@ async function runCode() {
   // showOutput.value = true;
 }
 
-function getLanguageId(language) {
+function getLanguage(language) {
   const lang = languageOptions.find((lang) => lang.value == language);
-  if (lang) return lang.id;
+  if (lang) return lang;
 
   return null;
+}
+
+async function copy(url) {
+  try {
+    await navigator.clipboard.writeText(url);
+    alert("Link copied successfully");
+  } catch (error) {
+    alert(error?.message);
+  }
+}
+
+async function createGist() {
+  try {
+    loading.value = true;
+    const octokit = new Octokit({ auth: config.public.GITHUB_TOKEN });
+
+    const extension = getLanguage(playground.language)?.extension;
+
+    const response = await octokit.request("POST /gists", {
+      public: false,
+      files: {
+        ["index." + extension ?? "js"]: {
+          content: playground.code,
+        },
+      },
+    });
+
+    const url = `https://codeplayground.site/${playground.language}?id=${response?.data?.id}`;
+    await copy(url);
+    loading.value = false;
+  } catch (error) {
+    console.log(error);
+    alert("An error occured. Please try again");
+    loading.value = false;
+  }
+}
+
+async function getGist() {
+  try {
+    const id = useRoute().query?.id;
+    const language = useRoute().params?.language;
+    if (!id) return;
+    const octokit = new Octokit({ auth: config.public.GITHUB_TOKEN });
+
+    const response = await octokit.request(`GET /gists/${id}`, {
+      gist_id: id,
+    });
+
+    const files = response?.data?.files;
+    if (!files) return;
+
+    const extension = getLanguage(language)?.extension;
+    const content = files["index." + extension]?.content;
+
+    playground.code = content;
+    playground.language = language;
+  } catch (error) {
+    console.log(error);
+    alert("An error occured. Please try again");
+  }
+}
+
+function getLanguageId(language) {
+  return getLanguage(language)?.id;
 }
 
 const handleCompile = async ({ code, language, input }) => {

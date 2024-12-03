@@ -84,6 +84,7 @@ export default defineNuxtConfig({
       RAPID_API_HOST: process.env.RAPID_API_HOST,
       RAPID_API_KEY: process.env.RAPID_API_KEY,
       RAPID_API_URL: process.env.RAPID_API_URL,
+      GITHUB_TOKEN: process.env.GITHUB_TOKEN,
     },
   },
 
