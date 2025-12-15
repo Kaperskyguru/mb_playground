@@ -10,6 +10,7 @@
         <NuxtPage />
       </div>
     </NuxtLayout>
+    <script src="https://topbanner.app/api/embed/774350f4fcbd3d3d91206c2478a57c1a.js" async></script>
   </div>
 </template>
 
