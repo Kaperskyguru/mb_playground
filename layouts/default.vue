@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div
+   <!-- <div
       class="bg-yellow-400 sticky"
       style="padding: 10px; display: flex; justify-content: center"
     >
@@ -17,7 +17,7 @@
           >Join now for just $54</a
         >
       </h2>
-    </div>
+    </div> -->
     <Base
       ><div>
         <slot />
