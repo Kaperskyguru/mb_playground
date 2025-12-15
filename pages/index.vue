@@ -139,24 +139,7 @@
                 class="ml-[-15px] w-14 rounded-full border-2 border-solid border-gray-100 bg-white shadow-xl"
               />
             </div>
-            <p class="font-inter max-w-[300px] text-sm leading-5">
-              Join the "Backend Weekly" newsletter of 10,000+ backend engineers
-              learning, building and becoming great backend engineers.
-            </p>
-            <div class="py-4">
-              <iframe
-                src="https://embeds.beehiiv.com/377541d8-4441-4601-899b-db447dc380d7?slim=true"
-                data-test-id="beehiiv-embed"
-                height="52"
-                frameborder="0"
-                scrolling="no"
-                style="
-                  margin: 0;
-                  border-radius: 0px !important;
-                  background-color: transparent;
-                "
-              ></iframe>
-            </div>
+            
           </div>
         </div>
       </section>
