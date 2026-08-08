@@ -177,14 +177,82 @@
           </a>
         </div>
       </section>
+
+      <!-- Crawlable internal links to every language page. Previously the only
+           link out of this hub was a single button to /javascript, which left the
+           other playgrounds with almost no internal link equity. -->
+      <section class="container mx-auto mb-[100px] px-4">
+        <h2 class="text-light-300 text-center text-3xl font-bold md:text-4xl">
+          Choose your language
+        </h2>
+        <ul
+          class="mx-auto mt-8 grid max-w-4xl grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          <li v-for="lang in languageOptions" :key="lang.value">
+            <nuxt-link
+              :to="`/${lang.value}`"
+              class="dark:border-gray-600 flex items-center gap-3 rounded-lg border border-solid border-gray-200 px-4 py-3 transition hover:border-[#525CBF] hover:shadow-md"
+            >
+              <Icon class="h-6 w-6 shrink-0" :name="lang.icon" />
+              <span class="text-left">
+                <span class="block font-semibold"
+                  >Online {{ lang.displayName }} Playground</span
+                >
+                <span class="block text-sm text-gray-500 dark:text-gray-400">{{
+                  lang.runtime
+                }}</span>
+              </span>
+            </nuxt-link>
+          </li>
+        </ul>
+      </section>
     </div>
   </main>
 </template>
 
 <script setup>
+import { languageOptions } from "~/helpers/languages";
+
 definePageMeta({
   layout: "language",
   // middleware: ["force-redirect"],
+});
+
+const SITE_URL = "https://playground.masteringbackend.com";
+
+const title =
+  "Online Code Playground for Backend Engineers — Run Code in 11 Languages";
+const description =
+  "Free online code playground and compiler for backend engineers. Write and run Python, Java, Go, Rust, PHP, JavaScript and more in your browser — no install, no signup.";
+
+useHead({
+  title,
+  link: [{ rel: "canonical", href: `${SITE_URL}/` }],
+  meta: [
+    { name: "description", content: description },
+    { name: "robots", content: "index, follow, max-image-preview:large" },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:url", content: `${SITE_URL}/` },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+  ],
+  script: [
+    {
+      type: "application/ld+json",
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name: "Online Code Playgrounds for Backend Engineers",
+        itemListElement: languageOptions.map((lang, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: `Online ${lang.displayName} Playground`,
+          url: `${SITE_URL}/${lang.value}`,
+        })),
+      }),
+    },
+  ],
 });
 </script>
 

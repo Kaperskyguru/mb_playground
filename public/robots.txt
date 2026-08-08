@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://playground.masteringbackend.com/sitemap.xml

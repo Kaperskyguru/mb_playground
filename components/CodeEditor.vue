@@ -290,7 +290,15 @@ async function createGist() {
       },
     });
 
-    const url = `https://codeplayground.site/${playground.language}?id=${response?.data?.id}`;
+    // Was hardcoded to https://codeplayground.site (dead domain) — every shared
+    // link was broken. Derive from the current origin instead.
+    const origin =
+      useRuntimeConfig().public?.SITE_URL ||
+      "https://playground.masteringbackend.com";
+    const url = `${origin.replace(
+      /\/$/,
+      ""
+    )}/${playground.language}?id=${response?.data?.id}`;
     await copy(url);
     loading.value = false;
   } catch (error) {

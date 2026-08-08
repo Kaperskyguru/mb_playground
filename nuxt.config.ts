@@ -34,7 +34,17 @@ export default defineNuxtConfig({
         {
           hid: "og:url",
           property: "og:url",
-          content: `https://codeplayground.site`,
+          content: `https://playground.masteringbackend.com`,
+        },
+        {
+          hid: "og:site_name",
+          property: "og:site_name",
+          content: "MasteringBackend Code Playground",
+        },
+        {
+          hid: "robots",
+          name: "robots",
+          content: "index, follow, max-image-preview:large",
         },
         {
           hid: "og:image:width",
@@ -81,6 +91,9 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
+      // Canonical origin. Used by the sitemap route and page canonical tags.
+      SITE_URL:
+        process.env.SITE_URL || "https://playground.masteringbackend.com",
       RAPID_API_HOST: process.env.RAPID_API_HOST,
       RAPID_API_KEY: process.env.RAPID_API_KEY,
       RAPID_API_URL: process.env.RAPID_API_URL,
